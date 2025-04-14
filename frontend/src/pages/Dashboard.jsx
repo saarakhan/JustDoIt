@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   const fetchTasks = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/tasks', config);
+      const res = await axios.get('https://justdoit-1.onrender.com/api/tasks', config);
       setTasks(res.data);
     } catch (err) {
       console.log(err);
@@ -36,10 +36,10 @@ const Dashboard = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/tasks/${isEditing}`, form, config);
+        await axios.put(`https://justdoit-1.onrender.com/api/tasks/${isEditing}`, form, config);
         setIsEditing(null);
       } else {
-        await axios.post('http://localhost:5000/api/tasks', form, config);
+        await axios.post('https://justdoit-1.onrender.com/api/tasks', form, config);
       }
       setForm({ title: '', description: '', status: 'pending' });
       fetchTasks();
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
   const handleDelete = async id => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, config);
+      await axios.delete(`https://justdoit-1.onrender.com/api/tasks/${id}`, config);
       fetchTasks();
     } catch (err) {
       console.log(err);
